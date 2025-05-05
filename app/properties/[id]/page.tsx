@@ -29,7 +29,7 @@ const PropertyPage = async ({ params }: { params: { id: string } }) => {
 
   // Check if property is bookmarked by user
   let isBookmarked = false;
-  if (session?.user?) {
+  if (session?.user?.id) {
     const bookmark = await prisma.bookmark.findUnique({
       where: {
         userId_propertyId: {
