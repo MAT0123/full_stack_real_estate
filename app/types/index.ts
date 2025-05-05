@@ -45,3 +45,4 @@ export interface Bookmark {
   createdAt: Date;
   property?: Property;
 }
+
