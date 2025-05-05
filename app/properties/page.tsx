@@ -11,11 +11,17 @@ interface SearchParams {
   propertyType?: string;
 }
 
-const PropertiesPage = async ({
-  searchParams,
-}: {
-  searchParams: SearchParams;
+interface Params {
+  id: string;
+}
+
+const PropertiesPage = async (props: {
+  searchParams: Promise<SearchParams>;
+  params: Promise<Params>;
 }) => {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
+
   const searchQuery = searchParams.q || '';
   const location = searchParams.location || '';
   const propertyType = searchParams.propertyType || '';
@@ -61,9 +67,7 @@ const PropertiesPage = async ({
 
   return (
     <>
-      <section className="page-banner h-[100px]">
-       
-      </section>
+      <section className="page-banner h-[100px]"></section>
 
       <section className="bg-white py-12">
         <div className="container mx-auto px-6">
@@ -74,13 +78,13 @@ const PropertiesPage = async ({
       <section className="py-16">
         <div className="container mx-auto px-6">
           <h2 className="text-2xl font-bold mb-8">
-            {properties.length > 0 
-              ? `Found ${properties.length} Properties` 
+            {properties.length > 0
+              ? `Found ${properties.length} Properties`
               : 'No Properties Found'}
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {properties.map((property:Property) => (
+            {properties.map((property: Property) => (
               <PropertyCard key={property.id} property={property} />
             ))}
           </div>

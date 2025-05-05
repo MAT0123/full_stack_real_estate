@@ -13,9 +13,9 @@ export const dynamic = 'force-dynamic';
  * Property details page component
  * Displays full information about a specific property listing
  */
-type tParams = Promise<{ id: string }>;
-export default async function PropertyPage({ params }: { params: tParams }) {
-  const  id  = (await params).id;
+export type Params = Promise<{ id: string }>;
+export default async function PropertyPage({ params }: { params: Params }) {
+  const  {id}  = await params;
 
   // Get current user session for authentication status
   const session = await getServerSession(authOptions);
