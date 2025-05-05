@@ -1,26 +1,77 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import 'tailwindcss';
+ 
+ 
+body{
+  @apply bg-gray-100
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components{
+  .property-card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden transition transform hover:-translate-y-1 hover:shadow-lg;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .property-card img {
+    @apply h-48 w-full object-cover;
+  }
+
+  .property-card-info {
+    @apply p-4;
+  }
+
+  .property-card-info h3 {
+    @apply text-xl font-bold mb-2;
+  }
+
+  .property-card-info p {
+    @apply text-gray-600 mb-4;
+  }
+
+  .form-control {
+    @apply mb-6;
+  }
+
+  .form-control label {
+    @apply block mb-2 text-gray-700 font-medium;
+  } 
+
+  /* .form-control input,
+  .form-control textarea,
+  .form-control select {
+    @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primary focus:ring-opacity-30;
+  } */
+ 
+  /* .btn {
+    @apply inline-block px-6 py-3 rounded-md text-white font-medium focus:outline-none focus:ring;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-secondary transition;
+  }
+
+  .btn-secondary {
+    @apply bg-black hover:bg-gray-800 transition;
+  }
+
+  .btn-outline {
+    @apply border border-gray-300 text-black hover:bg-gray-100 transition;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 transition;
+  }  
+
+  .page-banner {
+    @apply bg-gradient-to-r from-primary to-secondary py-16 text-white text-center;
+  } */
+
+  .page-banner h1 {
+    @apply text-4xl font-bold mb-4;
+  }
+
+  .page-banner p {
+    @apply text-lg mb-8;
+  }
+
+  .page-banner .container {
+    @apply max-w-4xl mx-auto px-6;
+  }
 }
