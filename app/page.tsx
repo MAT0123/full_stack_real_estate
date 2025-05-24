@@ -7,15 +7,12 @@ import { prisma } from './lib/db';
 import { Property } from './types';
 
 
-// Force dynamic rendering to avoid prerendering errors
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  // Use a try/catch block to handle potential errors during data fetching
   let properties: Property[] = [];
 
   try {
-    // Import prisma within the try block to handle connection errors gracefully
     const { prisma } = await import('./lib/db');
     
     properties = await prisma.property.findMany({
@@ -27,7 +24,6 @@ export default async function Home() {
     
   } catch (error) {
     console.error("Error fetching properties:", error);
-    // Continue with empty properties array rather than crashing
   }
 
   return (
@@ -35,9 +31,7 @@ export default async function Home() {
       <HomeBanner />
       <InfoBoxes />
       
-      {/* Conditionally render FeaturedProperties to avoid errors */}
-      {/* Commenting this out temporarily if it's causing issues */}
-      {/* <FeaturedProperties /> */}
+
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6">

@@ -4,10 +4,8 @@ import { authOptions } from '../lib/auth';
 import { redirect } from 'next/navigation';
 
 const RegisterPage = async () => {
-  // Check if logged in
   const session = await getServerSession(authOptions);
 
-  // If already authenticated, redirect to profile
   if (session) {
     redirect('/profile');
   }

@@ -50,7 +50,6 @@ export default async function PropertyPage({ params }: { params: Params }) {
   return (
     <section className="py-12">
       <div className="container mx-auto px-6">
-        {/* Property header with title, location, price */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
           <div>
             <h1 className="text-3xl font-bold">{property.title}</h1>
@@ -62,7 +61,6 @@ export default async function PropertyPage({ params }: { params: Params }) {
               ${(property.rates as any).monthly.toLocaleString()}/month
             </p>
             
-            {/* Bookmark button - only shown to logged in users */}
             {session?.user?.id && (
               <BookmarkButton 
                 propertyId={property.id}
@@ -70,20 +68,16 @@ export default async function PropertyPage({ params }: { params: Params }) {
               />
             )}
             
-            {/* Share options */}
             <ShareButtons property={property} />
           </div>
         </div>
 
-        {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Property details - takes up 2/3 of the space on large screens */}
           <div className="lg:col-span-2">
             <PropertyImages images={property.images} />
             <PropertyDetails property={property} />
           </div>
           
-          {/* Contact form sidebar - takes up 1/3 of the space */}
           <div>
             <PropertyContactForm property={property} />
           </div>

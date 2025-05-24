@@ -18,7 +18,6 @@ const ProfilePage = async () => {
 
   const user = session.user as SessionUser;
 
-  // Get user's properties
   const userProperties = await prisma.property.findMany({
     where: {
       userId: user.id,
@@ -28,7 +27,6 @@ const ProfilePage = async () => {
     },
   });
 
-  // Get user's bookmarks
   const bookmarks = await prisma.bookmark.findMany({
     where: {
       userId: user.id,
